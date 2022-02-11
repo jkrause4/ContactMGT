@@ -4,7 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "Contact.h"
+//#include "Address.cpp"
+#include "Contact.cpp"
+//#include "Name.cpp"
 
 using namespace std;
 
@@ -14,28 +16,20 @@ void addContact(vector<Contact>& lst);
 
 int main()
 {
-    //input text file
 	ifstream fin("contact.txt");
-    //output info
     ofstream fout("Text.txt");
 
-    //create vector
     vector<Contact> myContacts;
-    
-    //call loadContacts funtion
+
+    cout << myContacts.size() << endl;
     loadContacts(fin, myContacts);
 
-    //add two contacts
     for (int i = 0; i < 2; i++)
 	{
-        //call addContact funtion
 		addContact(myContacts);
 	}
-    
-    //call saveContact
-    saveContact(fout, myContacts);
 
-    //closes file
+    saveContact(fout, myContacts);
     fin.close();
     fout.close();
 
@@ -54,6 +48,7 @@ void loadContacts(istream& in, vector<Contact>& lst)
     {
         //put contact into vector
         lst.push_back(c);
+        cout << c << endl;
     }
 }
 void saveContact(ostream& out, const vector<Contact>& lst)
